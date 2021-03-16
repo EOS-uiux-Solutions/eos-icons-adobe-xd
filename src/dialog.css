@@ -1,0 +1,12 @@
+.dialog form {
+  width: 360px;
+}
+.h1 {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+.label {
+  display: flex;
+}

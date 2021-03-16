@@ -3,6 +3,7 @@
 This is currently unstable and would only work with the following steps.
 
 ## Steps
+
 - Open Adobe XD.
 - Click `Hamburger menu(left corner) -> Plugins -> Development -> Show Develop Folder`.
 - Visit the folder, and clone the repo.
@@ -10,7 +11,6 @@ This is currently unstable and would only work with the following steps.
 - Press `Ctrl + Shift + R`.
 - Click `Plugins`(bottom left corner).
 - `EOS` should show up on the search bar.
-
 
 ### FAQs
 
@@ -21,6 +21,7 @@ Workaround: Toggle `Responsive Resize` before resizing those icons.
 
 If it doesn't help,
 then:
+
 - Delete it.
 - Paste again.
 - Switch off `Responsive Resize`.
