@@ -1,0 +1,43 @@
+{
+  "name": "eos-icons",
+  "version": "1.0.0",
+  "description": "An Adobe XD plugin to use all of EOS-icons from within the application",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x yarn build",
+    "build": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhirup-99/eos-icons-adobe-xd.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Abhirup-99/eos-icons-adobe-xd/issues"
+  },
+  "homepage": "https://github.com/Abhirup-99/eos-icons-adobe-xd#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx prettier --write ."
+    }
+  },
+  "devDependencies": {
+    "husky": "^4.3.8",
+    "nodemon": "^2.0.7",
+    "prettier": "2.2.1",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^5.1.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "style-loader": "^2.0.0",
+    "yarn": "^1.22.10"
+  }
+}

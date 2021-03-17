@@ -1,29 +1,28 @@
-  
 {
-    "id": "b5440deb",
-    "name": "EOS",
-    "version": "1.0.0",
-    "description": "EOS plugins.",
-    "summary": "EOS plugins.",
-    "languages": ["en"],
-    "author": "Abhirup Pal",
-    "helpUrl": "abhiruppalmethodist@gmail.com",
-    "icons": [
-       {
-          "width": 96,
-          "height": 96,
-          "path": "images/icon.png"
-       }
-    ],
-    "host": {
-       "app": "XD",
-       "minVersion": "13.0.0"
-    },
-    "uiEntryPoints": [
-       {
-          "type": "menu",
-          "label": "Eos-icons",
-          "commandId": "chooseIcon"
-       }
-    ]
- }
+  "id": "b5440deb",
+  "name": "EOS",
+  "version": "1.0.0",
+  "description": "EOS plugins.",
+  "summary": "EOS plugins.",
+  "languages": ["en"],
+  "author": "Abhirup Pal",
+  "helpUrl": "abhiruppalmethodist@gmail.com",
+  "icons": [
+    {
+      "width": 96,
+      "height": 96,
+      "path": "images/icon.png"
+    }
+  ],
+  "host": {
+    "app": "XD",
+    "minVersion": "13.0.0"
+  },
+  "uiEntryPoints": [
+    {
+      "type": "menu",
+      "label": "Eos-icons",
+      "commandId": "main"
+    }
+  ]
+}
