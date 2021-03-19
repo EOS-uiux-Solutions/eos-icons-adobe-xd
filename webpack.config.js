@@ -1,7 +1,7 @@
 module.exports = {
   entry: "./src/main.jsx",
   output: {
-    path: __dirname,
+    path: __dirname + "/dist",
     filename: "main.js",
     libraryTarget: "commonjs2",
   },

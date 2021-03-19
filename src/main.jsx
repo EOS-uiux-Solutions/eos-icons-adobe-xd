@@ -3,7 +3,7 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./EosForm.jsx";
 
-const commands = () => {
+const main = () => {
   let dialog;
   function getDialog() {
     if (dialog == null) {
@@ -14,4 +14,5 @@ const commands = () => {
   }
   return document.body.appendChild(getDialog()).showModal();
 };
-export default commands;
+
+export { main };

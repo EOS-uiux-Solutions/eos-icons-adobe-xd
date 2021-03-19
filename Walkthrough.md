@@ -4,9 +4,25 @@ This is currently unstable and would only work with the following steps.
 
 ## Steps
 
+# Latest
+
+- Clone the repo in the folder of your choice.
+- Run `npm i` and `npm run watch`.
+- Install `Adobe UXP Developer Tool`.
+- Open `Adobe XD` and open a document.
+- Open UXP Developer Tool.
+- Click `Add Existing Plugin`.
+- Add the `manifest.json` from the dist folder.
+- Click on 3 dot icon and select `Load`.
+- Go back to `Adobe XD` and try it out! :)
+
+# Deprecated
+
 - Open Adobe XD.
 - Click `Hamburger menu(left corner) -> Plugins -> Development -> Show Develop Folder`.
 - Visit the folder, and clone the repo.
+- Run `npm i` and `npm run watch`.
+- Move the `images` folder and `manifest.json` outside the `dist` directory to the top level.
 - Visit Adobe XD.
 - Press `Ctrl + Shift + R`.
 - Click `Plugins`(bottom left corner).
