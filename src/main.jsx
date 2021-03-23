@@ -1,18 +1,16 @@
-import reactShim from "./react-shim";
-import React from "react";
-import { render } from "react-dom";
-import App from "./EosForm.jsx";
+// shims, in case they aren't present in the current environment
+require("./util/reactShim");
 
-const main = () => {
-  let dialog;
-  function getDialog() {
-    if (dialog == null) {
-      dialog = document.createElement("dialog");
-      render(<App dialog={dialog} />, dialog);
-    }
-    return dialog;
-  }
-  return document.body.appendChild(getDialog()).showModal();
+const React = require("react");
+const ReactDOM = require("react-dom");
+
+const App = require("./App");
+const PanelController = require("./PanelController");
+
+const panel = new PanelController(App);
+
+module.exports = {
+  panels: {
+    panel,
+  },
 };
-
-export { main };
