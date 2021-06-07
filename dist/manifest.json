@@ -20,9 +20,9 @@
   },
   "uiEntryPoints": [
     {
-      "type": "menu",
+      "type": "panel",
       "label": "Eos-icons",
-      "commandId": "main"
+      "panelId": "panel"
     }
   ]
 }

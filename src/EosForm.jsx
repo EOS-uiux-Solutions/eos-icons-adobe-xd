@@ -1,62 +1,44 @@
-import React, { useRef } from "react";
-import clipboard from "clipboard";
-import "./dialog.css";
-const EosForm = (props) => {
-  let file;
-  const refContainer = useRef(null);
-  const onSearch = () => {
-    const svgName = refContainer.current.value;
-    const request = new XMLHttpRequest();
-    const url = `https://cdn.jsdelivr.net/npm/eos-icons@latest/svg/${svgName}.svg`;
-    request.open("GET", url);
-    request.onload = () => {
-      console.log("response sent");
-      file = request.response;
-    };
-    request.send();
-  };
+const React = require("react");
+const styles = require("./dialog.css");
+const clipboard = require("clipboard");
+
+const ColorPicker = (props) => {
   return (
-    <form className="iconDialog">
+    <div className="iconDialog">
       <h1 className="h1">
         <span>EOS</span>
       </h1>
       <hr />
       <p>Search for icons from the EOS collection.</p>
+      {props.plugin}
       <label>
         <div className="label">
           <span>Search icons</span>
         </div>
         <input
-          ref={refContainer}
+          ref={props.refContainer}
           type="text"
           id="searchInput"
           placeholder="Search..."
+          onKeyUp={props.handleKeyUp}
         />
       </label>
+      {props.searchGif}
       <footer>
-        <button className="search" onClick={onSearch}>
+        <button className="search" onClick={props.onSearch}>
           Search
-        </button>
-        <button
-          className="cancelBtn"
-          onClick={() => {
-            props.dialog.close();
-          }}
-        >
-          Cancel
         </button>
         <button
           className="okBtn"
           onClick={() => {
-            clipboard.copyText(file);
-            props.dialog.close();
+            clipboard.copyText(props.file);
           }}
         >
           Copy to Clipboard
         </button>
       </footer>
-    </form>
+    </div>
   );
 };
 
-export default EosForm;
+module.exports = ColorPicker;
