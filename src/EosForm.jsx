@@ -3,7 +3,7 @@ const PropTypes = require("prop-types");
 // eslint-disable-next-line import/no-unresolved
 const clipboard = require("clipboard");
 
-const ColorPicker = (props) => {
+const EosForm = (props) => {
   const { plugin, refContainer, onSearch, searchGif, handleKeyUp, file } =
     props;
   return (
@@ -13,7 +13,7 @@ const ColorPicker = (props) => {
       </h1>
       <hr />
       <p>Search for icons from the EOS collection.</p>
-      {plugin}
+      {typeof plugin !== "string" && plugin}
       <label htmlFor="searchInput">
         <div className="label">
           <span>Search icons</span>
@@ -37,24 +37,31 @@ const ColorPicker = (props) => {
           onClick={() => {
             clipboard.copyText(file);
           }}
+          disabled={!file}
         >
           Copy to Clipboard
         </button>
       </footer>
+      {typeof plugin === "string" && (
+        <div
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: plugin.replace("<svg", "<svg width='100' height='100'"),
+          }}
+        />
+      )}
     </div>
   );
 };
 
-ColorPicker.propTypes = {
-  plugin: PropTypes.element.isRequired,
-  refContainer: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.elementType }),
-  ]).isRequired,
+EosForm.propTypes = {
+  plugin: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  refContainer: PropTypes.any.isRequired,
   handleKeyUp: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   file: PropTypes.any.isRequired,
   onSearch: PropTypes.func.isRequired,
   searchGif: PropTypes.element.isRequired,
 };
-module.exports = ColorPicker;
+module.exports = EosForm;

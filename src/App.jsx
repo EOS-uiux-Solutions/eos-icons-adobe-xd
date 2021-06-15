@@ -7,7 +7,7 @@ const App = () => {
   const [plugin, updatePlugin] = React.useState(
     <p>Let&apos;s start by searching abstract.</p>
   );
-  const [file, updateFile] = React.useState();
+  const [file, updateFile] = React.useState(null);
   const [searchGif, updateSearchGif] = React.useState(<div />);
 
   const onSearch = () => {
@@ -22,7 +22,7 @@ const App = () => {
       if (!request.response.includes("Couldn't find")) {
         updateSearchGif(<div />);
         updateFile(request.response);
-        updatePlugin(<p>Svg found!! Click copy and use it.</p>);
+        updatePlugin(request.response);
       } else {
         updateSearchGif(<div />);
         updatePlugin(<p>Svg not found. Try searching for abstract.</p>);
