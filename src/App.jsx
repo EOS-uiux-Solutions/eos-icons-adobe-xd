@@ -5,24 +5,26 @@ const EosForm = require("./EosForm");
 const App = () => {
   const refContainer = React.useRef();
   const [plugin, updatePlugin] = React.useState(
-    <p>Let's start by searching abstract.</p>
+    <p>Let&apos;s start by searching abstract.</p>
   );
   const [file, updateFile] = React.useState();
-  const [searchGif, updateSearchGif] = React.useState(<div></div>);
+  const [searchGif, updateSearchGif] = React.useState(<div />);
 
   const onSearch = () => {
     const svgName = refContainer.current.value;
     const request = new XMLHttpRequest();
     const url = `https://cdn.jsdelivr.net/npm/eos-icons@latest/svg/${svgName}.svg`;
     request.open("GET", url);
-    updateSearchGif(<img src={Spinner} width="40px" height="40px" />);
+    updateSearchGif(
+      <img src={Spinner} width="40px" height="40px" alt="Loading" />
+    );
     request.onload = () => {
       if (!request.response.includes("Couldn't find")) {
-        updateSearchGif(<div></div>);
+        updateSearchGif(<div />);
         updateFile(request.response);
         updatePlugin(<p>Svg found!! Click copy and use it.</p>);
       } else {
-        updateSearchGif(<div></div>);
+        updateSearchGif(<div />);
         updatePlugin(<p>Svg not found. Try searching for abstract.</p>);
       }
     };
@@ -40,9 +42,9 @@ const App = () => {
       <EosForm
         refContainer={refContainer}
         plugin={plugin}
-        handleKeyUp={handleKeyUp.bind(this)}
+        handleKeyUp={handleKeyUp}
         file={file}
-        onSearch={onSearch.bind(this)}
+        onSearch={onSearch}
         searchGif={searchGif}
       />
     </panel>

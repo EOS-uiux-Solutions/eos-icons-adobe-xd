@@ -32,3 +32,6 @@ jobs:
 
       - name: Check Formatting
         run: npx prettier --check .
+
+      - name: Check Linting
+        run: npx eslint .
