@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Spinner from "./images/Spinner.gif";
+import Spinner from "./images/spinner.svg";
 import EosForm from "./EosForm";
 
 const App = () => {
