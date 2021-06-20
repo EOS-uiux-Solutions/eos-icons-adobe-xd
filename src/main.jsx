@@ -1,10 +1,9 @@
-const App = require("./App");
-const PanelController = require("./PanelController");
+import App from "./App";
+import PanelController from "./PanelController";
 
 const panel = new PanelController(App);
 
-module.exports = {
-  panels: {
-    panel,
-  },
+// eslint-disable-next-line import/prefer-default-export
+export const panels = {
+  panel,
 };

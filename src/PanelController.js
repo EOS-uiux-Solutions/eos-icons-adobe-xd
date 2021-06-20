@@ -1,7 +1,7 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
+import React from "react";
+import { render } from "react-dom";
 // eslint-disable-next-line import/no-unresolved
-const { selection } = require("scenegraph");
+import { selection } from "scenegraph";
 
 class PanelController {
   constructor(App) {
@@ -22,7 +22,7 @@ class PanelController {
 
     if (!this.instance) {
       // eslint-disable-next-line react/no-render-return-value
-      this.instance = ReactDOM.render(
+      this.instance = render(
         // eslint-disable-next-line react/jsx-filename-extension
         <App selection={selection} />,
         this.rootNode
@@ -35,4 +35,4 @@ class PanelController {
   }
 }
 
-module.exports = PanelController;
+export default PanelController;

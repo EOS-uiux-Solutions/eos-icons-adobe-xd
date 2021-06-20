@@ -1,14 +1,14 @@
-const React = require("react");
-const Spinner = require("./images/Spinner.gif");
-const EosForm = require("./EosForm");
+import React, { useRef, useState } from "react";
+import Spinner from "./images/Spinner.gif";
+import EosForm from "./EosForm";
 
 const App = () => {
-  const refContainer = React.useRef();
-  const [plugin, updatePlugin] = React.useState(
+  const refContainer = useRef();
+  const [plugin, updatePlugin] = useState(
     <p>Let&apos;s start by searching abstract.</p>
   );
-  const [file, updateFile] = React.useState(null);
-  const [searchGif, updateSearchGif] = React.useState(<div />);
+  const [file, updateFile] = useState(null);
+  const [searchGif, updateSearchGif] = useState(<div />);
 
   const onSearch = () => {
     const svgName = refContainer.current.value;
@@ -51,4 +51,4 @@ const App = () => {
   );
 };
 
-module.exports = App;
+export default App;

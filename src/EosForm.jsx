@@ -1,7 +1,7 @@
-const React = require("react");
-const PropTypes = require("prop-types");
+import React from "react";
+import { oneOfType, string, element, any, func } from "prop-types";
 // eslint-disable-next-line import/no-unresolved
-const clipboard = require("clipboard");
+import { copyText } from "clipboard";
 
 const EosForm = (props) => {
   const { plugin, refContainer, onSearch, searchGif, handleKeyUp, file } =
@@ -35,7 +35,7 @@ const EosForm = (props) => {
           type="button"
           className="okBtn"
           onClick={() => {
-            clipboard.copyText(file);
+            copyText(file);
           }}
           disabled={!file}
         >
@@ -55,13 +55,13 @@ const EosForm = (props) => {
 };
 
 EosForm.propTypes = {
-  plugin: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  plugin: oneOfType([string, element]).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  refContainer: PropTypes.any.isRequired,
-  handleKeyUp: PropTypes.func.isRequired,
+  refContainer: any.isRequired,
+  handleKeyUp: func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  file: PropTypes.any.isRequired,
-  onSearch: PropTypes.func.isRequired,
-  searchGif: PropTypes.element.isRequired,
+  file: any.isRequired,
+  onSearch: func.isRequired,
+  searchGif: element.isRequired,
 };
-module.exports = EosForm;
+export default EosForm;
