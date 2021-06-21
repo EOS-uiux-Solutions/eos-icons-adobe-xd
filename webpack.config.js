@@ -1,11 +1,11 @@
 module.exports = {
   entry: "./src/main.jsx",
   output: {
-    path: __dirname + "/dist",
+    path: `${__dirname}/dist`,
     filename: "main.js",
     libraryTarget: "commonjs2",
   },
-  devtool: false, // prevent webpack from using eval() on my module
+  devtool: false,
   externals: {
     application: "application",
     uxp: "uxp",

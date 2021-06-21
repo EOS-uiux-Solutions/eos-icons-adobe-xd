@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x yarn build",
+    "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x npm run build",
     "build": "webpack --mode development"
   },
   "repository": {
@@ -20,24 +20,34 @@
   "homepage": "https://github.com/Abhirup-99/eos-icons-adobe-xd#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npx prettier --write ."
+      "pre-commit": "npx prettier --write . && npx eslint ."
     }
   },
   "devDependencies": {
-    "husky": "^4.3.8",
-    "prettier": "2.2.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^1.1.11",
+    "husky": "^4.3.8",
     "nodemon": "^1.18.7",
+    "prettier": "2.3.1",
     "style-loader": "^0.22.1",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   }

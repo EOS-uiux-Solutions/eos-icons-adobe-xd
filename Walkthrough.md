@@ -1,7 +1,5 @@
 ### EOS Adobe Plugin
 
-This is currently unstable and would only work with the following steps.
-
 ## Steps
 
 # Latest
