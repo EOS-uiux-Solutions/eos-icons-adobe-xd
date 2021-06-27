@@ -22,7 +22,11 @@
     {
       "type": "panel",
       "label": "Eos-icons",
-      "panelId": "panel"
+      "panelId": "panel",
+      "shortcut": {
+        "mac": "Ctrl+Alt+D",
+        "win": "Ctrl+Alt+D"
+      }
     }
   ]
 }
