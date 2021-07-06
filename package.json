@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x npm run build",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "prod": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "prop-types": "^15.7.2",
