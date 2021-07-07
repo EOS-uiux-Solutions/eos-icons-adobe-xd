@@ -16,18 +16,6 @@ An Adobe XD plugin to use all of EOS-icons from within the application
 - Click on 3 dot icon and select `Load`.
 - Go back to `Adobe XD` and try it out! :)
 
-# Deprecated
-
-- Open Adobe XD.
-- Click `Hamburger menu(left corner) -> Plugins -> Development -> Show Develop Folder`.
-- Visit the folder, and clone the repo.
-- Run `npm i` and `npm run watch`.
-- Move the `images` folder and `manifest.json` outside the `dist` directory to the top level.
-- Visit Adobe XD.
-- Press `Ctrl + Shift + R`.
-- Click `Plugins`(bottom left corner).
-- `EOS` should show up on the search bar.
-
 ### FAQs
 
 1. Some icons get distorted. Is it the plugin fault?
