@@ -1,12 +1,12 @@
 {
   "id": "b5440deb",
-  "name": "EOS",
+  "name": "EOS-icons",
   "version": "1.0.0",
-  "description": "EOS plugins.",
-  "summary": "EOS plugins.",
+  "description": "EOS icons XD plugin",
+  "summary": "Thank you for using EOS Icons. For any issues, feel free to check out https://eos-icons.com/.",
   "languages": ["en"],
   "author": "Abhirup Pal",
-  "helpUrl": "abhiruppalmethodist@gmail.com",
+  "helpUrl": "https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd",
   "icons": [
     {
       "width": 96,
