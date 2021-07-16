@@ -15,3 +15,33 @@
   width: 50px;
   height: 50px;
 }
+
+.select-tag {
+  width: 50%;
+}
+
+.select-container {
+  display: flex;
+}
+
+.image-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 10px 0;
+}
+
+.category-container span {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 4px 0;
+}
