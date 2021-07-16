@@ -1,5 +1,5 @@
 {
-  "name": "eos-icons",
+  "name": "eos-icons-adobe-xd",
   "version": "1.0.0",
   "description": "An Adobe XD plugin to use all of EOS-icons from within the application",
   "main": "main.js",
@@ -49,8 +49,12 @@
     "@svgr/webpack": "^5.5.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "eos-icons": "^5.1.0",
+    "eos-icons-react": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-select": "^4.3.1",
+    "react-tooltip": "^4.2.21"
   }
 }
