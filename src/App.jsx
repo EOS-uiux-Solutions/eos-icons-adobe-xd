@@ -1,65 +1,123 @@
-import React, { useRef, useState } from "react";
-import EosForm from "./EosForm";
+import React, { useRef, useState, useEffect } from "react";
+import ReactDOMServer from "react-dom/server";
+import * as EOSIcons from "eos-icons-react";
+// eslint-disable-next-line import/no-unresolved
+import { copyText } from "clipboard";
+import FormHolder from "./FormHolder";
+import EOSIconsList from "./converted-icons.json";
+import OptionsList from "./optionList.json";
+import IconBox from "./IconBox";
+
+const copyToClipboard = (svg) => {
+  copyText(ReactDOMServer.renderToStaticMarkup(svg));
+};
+
+const searchIconsByName = (name, theme, option) => {
+  const iconDivs = [];
+  EOSIconsList[option].forEach((icon) => {
+    const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
+    const isFilledSelected = theme === "Filled";
+    if (
+      icon.name.indexOf(name) !== -1 &&
+      (!isFilledSelected || (isFilledSelected && isFilledAvailable))
+    ) {
+      const nameIcon = `Eos${icon.name}${
+        isFilledSelected ? "Filled" : "Outlined"
+      }`;
+      const EOSReactIcon = EOSIcons[nameIcon];
+      if (EOSReactIcon !== undefined) {
+        iconDivs.push(
+          <div
+            className="image-container"
+            key={nameIcon}
+            onClick={() => {
+              copyToClipboard(EOSReactIcon({ size: "xxxl" }));
+            }}
+          >
+            {EOSReactIcon({ size: "xl" })}
+          </div>
+        );
+      }
+    }
+  });
+  if (iconDivs.length === 0) {
+    return null;
+  }
+  return <IconBox option={option} iconDivs={iconDivs} />;
+};
 
 const App = () => {
-  const refContainer = useRef();
-  const [plugin, updatePlugin] = useState(
+  const searchCategory = useRef();
+  const searchTheme = useRef();
+  const inputField = useRef();
+  const [helperText, setHelperText] = useState(
     <p>Let&apos;s start by searching abstract.</p>
   );
-  const [file, updateFile] = useState(null);
-  const [searchGif, updateSearchGif] = useState(<div />);
-
-  const onSearch = () => {
-    const svgName = refContainer.current.value;
-    const request = new XMLHttpRequest();
-    const url = `https://cdn.jsdelivr.net/npm/eos-icons@latest/svg/${svgName}.svg`;
-    request.open("GET", url);
-    updateSearchGif(
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path
-          d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-          opacity=".5"
-        />
-        <path d="M20,12h2A10,10,0,0,0,12,2V4A8,8,0,0,1,20,12Z">
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            from="0 12 12"
-            to="360 12 12"
-            dur="1s"
-            repeatCount="indefinite"
-          />
-        </path>
-      </svg>
-    );
-    request.onload = () => {
-      if (!request.response.includes("Couldn't find")) {
-        updateSearchGif(<div />);
-        updateFile(request.response);
-        updatePlugin(request.response);
-      } else {
-        updateSearchGif(<div />);
-        updatePlugin(<p>Svg not found. Try searching for abstract.</p>);
+  const [iconsContainer, updateIcons] = useState(null);
+  useEffect(() => {
+    const createIcons = (option) => {
+      const iconDivs = [];
+      const limit =
+        EOSIconsList[option].length < 10 ? EOSIconsList[option].length : 10;
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < limit; i++) {
+        const icon = EOSIconsList[option][i];
+        const name = EOSIcons[`Eos${icon.name}Filled`]
+          ? `Eos${icon.name}Filled`
+          : `Eos${icon.name}Outlined`;
+        const EOSReactIcon = EOSIcons[name];
+        if (EOSReactIcon !== undefined) {
+          iconDivs.push(
+            <div
+              className="image-container"
+              key={name}
+              onClick={() => {
+                copyToClipboard(EOSReactIcon({ size: "xxxl" }));
+              }}
+            >
+              {EOSReactIcon({ size: "xl" })}
+            </div>
+          );
+        }
       }
+
+      return <IconBox option={option} iconDivs={iconDivs} />;
     };
-    request.send();
-  };
+    updateIcons(OptionsList.map((option) => createIcons(option)));
+  }, []);
+
   const handleKeyUp = (event) => {
-    updatePlugin(<p>We would be searching for {refContainer.current.value}</p>);
+    setHelperText(<p>We would be searching for {inputField.current.value}</p>);
     if (event.key === "Enter") {
       event.preventDefault();
     }
   };
 
+  const onSearch = () => {
+    const category = searchCategory.current.value;
+    const theme = searchTheme.current.value;
+    const name = inputField.current.value;
+    let iconList;
+    if (category === "all") {
+      iconList = OptionsList.map((option) =>
+        searchIconsByName(name, theme, option)
+      );
+    } else {
+      iconList = searchIconsByName(name, theme, category);
+    }
+    updateIcons(iconList);
+  };
+
   return (
     <panel>
-      <EosForm
-        refContainer={refContainer}
-        plugin={plugin}
+      <FormHolder
+        helperText={helperText}
+        inputField={inputField}
         handleKeyUp={handleKeyUp}
-        file={file}
         onSearch={onSearch}
-        searchGif={searchGif}
+        searchTheme={searchTheme}
+        searchCategory={searchCategory}
+        iconOptions={iconsContainer}
       />
     </panel>
   );

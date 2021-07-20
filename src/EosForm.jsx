@@ -1,67 +1,61 @@
 import React from "react";
-import { oneOfType, string, element, any, func } from "prop-types";
-// eslint-disable-next-line import/no-unresolved
-import { copyText } from "clipboard";
+import { any, func } from "prop-types";
+import OptionsList from "./optionList.json";
+import "./dialog.css";
 
-const EosForm = (props) => {
-  const { plugin, refContainer, onSearch, searchGif, handleKeyUp, file } =
-    props;
+const EosForm = ({
+  inputField,
+  searchCategory,
+  searchTheme,
+  handleKeyUp,
+  onSearch,
+}) => {
+  const addOptions = ["all", ...OptionsList];
+  const options = addOptions.map((el) => (
+    <option value={el} key={el}>
+      {el}
+    </option>
+  ));
+
   return (
-    <div className="iconDialog">
-      <h1 className="h1">
-        <span>EOS</span>
-      </h1>
-      <hr />
-      <p>Search for icons from the EOS collection.</p>
-      {typeof plugin !== "string" && plugin}
+    <div>
       <label htmlFor="searchInput">
         <div className="label">
           <span>Search icons</span>
         </div>
         <input
-          ref={refContainer}
+          ref={inputField}
           type="text"
           id="searchInput"
           placeholder="Search..."
           onKeyUp={handleKeyUp}
         />
       </label>
-      {searchGif}
-      <footer>
-        <button type="button" className="search" onClick={onSearch}>
-          Search
-        </button>
-        <button
-          type="button"
-          className="okBtn"
-          onClick={() => {
-            copyText(file);
-          }}
-          disabled={!file}
+      <div className="select-container">
+        <select
+          value={addOptions[0]}
+          className="select-tag"
+          ref={searchCategory}
         >
-          Copy to Clipboard
-        </button>
-      </footer>
-      {typeof plugin === "string" && (
-        <div
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: plugin.replace("<svg", "<svg width='100' height='100'"),
-          }}
-        />
-      )}
+          {options}
+        </select>
+        <select value="outlined" className="select-tag" ref={searchTheme}>
+          <option key="outlined">Outlined</option>
+          <option key="filled">Filled</option>
+        </select>
+      </div>
+      <button type="button" className="search" onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 };
 
 EosForm.propTypes = {
-  plugin: oneOfType([string, element]).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  refContainer: any.isRequired,
+  inputField: any.isRequired,
+  searchCategory: any.isRequired,
+  searchTheme: any.isRequired,
   handleKeyUp: func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  file: any.isRequired,
   onSearch: func.isRequired,
-  searchGif: element.isRequired,
 };
 export default EosForm;
