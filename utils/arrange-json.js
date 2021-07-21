@@ -1,32 +1,11 @@
 const fs = require("fs");
-const icons = require("./eos-icons.json");
+const icons = require("../node_modules/eos-icons/dist/js/eos-icons.json");
 
-const categoryList = {
-  action: [],
-  alert: [],
-  "artificial intelligence": [],
-  av: [],
-  communication: [],
-  content: [],
-  design: [],
-  development: [],
-  device: [],
-  editor: [],
-  file: [],
-  hardware: [],
-  home: [],
-  image: [],
-  maps: [],
-  navigation: [],
-  notification: [],
-  places: [],
-  roles: [],
-  search: [],
-  services: [],
-  social: [],
-  toggle: [],
-  virtualization: [],
-};
+const categoryArray = [...new Set(icons.map((icon) => icon.category))];
+const categoryList = {};
+categoryArray.forEach((category) => {
+  categoryList[category] = [];
+});
 
 icons.forEach((icon) => {
   if (icon.type === "static") {

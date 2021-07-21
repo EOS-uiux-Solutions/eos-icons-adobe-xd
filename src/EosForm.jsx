@@ -32,17 +32,34 @@ const EosForm = ({
         />
       </label>
       <div className="select-container">
-        <select
-          value={addOptions[0]}
-          className="select-tag"
-          ref={searchCategory}
-        >
-          {options}
-        </select>
-        <select value="outlined" className="select-tag" ref={searchTheme}>
-          <option key="outlined">Outlined</option>
-          <option key="filled">Filled</option>
-        </select>
+        <label htmlFor="category">
+          <div className="label">
+            <span>Category</span>
+          </div>
+          <select
+            value={addOptions[0]}
+            className="select-tag"
+            ref={searchCategory}
+            id="category"
+            onChange={onSearch}
+          >
+            {options}
+          </select>
+        </label>
+        <label htmlFor="theme">
+          <div className="label">
+            <span>Theme</span>
+          </div>
+          <select
+            value="outlined"
+            className="select-tag"
+            ref={searchTheme}
+            onChange={onSearch}
+          >
+            <option key="outlined">Outlined</option>
+            <option key="filled">Filled</option>
+          </select>
+        </label>
       </div>
       <button type="button" className="search" onClick={onSearch}>
         Search

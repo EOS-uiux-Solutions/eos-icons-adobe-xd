@@ -8,7 +8,7 @@
   flex-direction: row;
 }
 .label {
-  display: flex;
+  margin: 0 8px;
 }
 
 .iconDialog svg {
@@ -22,6 +22,19 @@
 
 .select-container {
   display: flex;
+  column-gap: 10%;
+}
+
+.select-container label {
+  width: 45%;
+  padding-right: 5%;
+}
+.select-container label:first-of-type {
+  width: 50%;
+}
+
+.select-container select {
+  width: 100%;
 }
 
 .image-box {
@@ -31,7 +44,6 @@
 }
 
 .image-container {
-  background-color: white;
   width: 40px;
   height: 40px;
   display: flex;
@@ -44,4 +56,12 @@
   font-weight: 700;
   font-size: 16px;
   padding: 4px 0;
+}
+
+.alert {
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  background: white;
+  padding: 10px;
 }

@@ -8,44 +8,6 @@ import EOSIconsList from "./converted-icons.json";
 import OptionsList from "./optionList.json";
 import IconBox from "./IconBox";
 
-const copyToClipboard = (svg) => {
-  copyText(ReactDOMServer.renderToStaticMarkup(svg));
-};
-
-const searchIconsByName = (name, theme, option) => {
-  const iconDivs = [];
-  EOSIconsList[option].forEach((icon) => {
-    const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
-    const isFilledSelected = theme === "Filled";
-    if (
-      icon.name.indexOf(name) !== -1 &&
-      (!isFilledSelected || (isFilledSelected && isFilledAvailable))
-    ) {
-      const nameIcon = `Eos${icon.name}${
-        isFilledSelected ? "Filled" : "Outlined"
-      }`;
-      const EOSReactIcon = EOSIcons[nameIcon];
-      if (EOSReactIcon !== undefined) {
-        iconDivs.push(
-          <div
-            className="image-container"
-            key={nameIcon}
-            onClick={() => {
-              copyToClipboard(EOSReactIcon({ size: "xxxl" }));
-            }}
-          >
-            {EOSReactIcon({ size: "xl" })}
-          </div>
-        );
-      }
-    }
-  });
-  if (iconDivs.length === 0) {
-    return null;
-  }
-  return <IconBox option={option} iconDivs={iconDivs} />;
-};
-
 const App = () => {
   const searchCategory = useRef();
   const searchTheme = useRef();
@@ -53,7 +15,52 @@ const App = () => {
   const [helperText, setHelperText] = useState(
     <p>Let&apos;s start by searching abstract.</p>
   );
+  const [alert, updateAlert] = useState(null);
   const [iconsContainer, updateIcons] = useState(null);
+  const copyToClipboard = (svg) => {
+    copyText(ReactDOMServer.renderToStaticMarkup(svg));
+    updateAlert(
+      <div className="alert">
+        <span>Svg has been copied!!</span>
+      </div>
+    );
+    setTimeout(() => {
+      updateAlert(null);
+    }, 1000);
+  };
+  const searchIconsByName = (name, theme, option) => {
+    const iconDivs = [];
+    EOSIconsList[option].forEach((icon) => {
+      const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
+      const isFilledSelected = theme === "Filled";
+      if (
+        icon.name.indexOf(name) !== -1 &&
+        (!isFilledSelected || (isFilledSelected && isFilledAvailable))
+      ) {
+        const nameIcon = `Eos${icon.name}${
+          isFilledSelected ? "Filled" : "Outlined"
+        }`;
+        const EOSReactIcon = EOSIcons[nameIcon];
+        if (EOSReactIcon !== undefined) {
+          iconDivs.push(
+            <div
+              className="image-container"
+              key={nameIcon}
+              onClick={() => {
+                copyToClipboard(EOSReactIcon({ size: "xxxl" }));
+              }}
+            >
+              {EOSReactIcon({ size: "xl" })}
+            </div>
+          );
+        }
+      }
+    });
+    if (iconDivs.length === 0) {
+      return null;
+    }
+    return <IconBox option={option} iconDivs={iconDivs} key={option} />;
+  };
   useEffect(() => {
     const createIcons = (option) => {
       const iconDivs = [];
@@ -81,17 +88,10 @@ const App = () => {
         }
       }
 
-      return <IconBox option={option} iconDivs={iconDivs} />;
+      return <IconBox option={option} iconDivs={iconDivs} key={option} />;
     };
     updateIcons(OptionsList.map((option) => createIcons(option)));
   }, []);
-
-  const handleKeyUp = (event) => {
-    setHelperText(<p>We would be searching for {inputField.current.value}</p>);
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
 
   const onSearch = () => {
     const category = searchCategory.current.value;
@@ -108,18 +108,29 @@ const App = () => {
     updateIcons(iconList);
   };
 
+  const handleKeyUp = (event) => {
+    setHelperText(<p>We would be searching for {inputField.current.value}</p>);
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onSearch();
+    }
+  };
+
   return (
-    <panel>
-      <FormHolder
-        helperText={helperText}
-        inputField={inputField}
-        handleKeyUp={handleKeyUp}
-        onSearch={onSearch}
-        searchTheme={searchTheme}
-        searchCategory={searchCategory}
-        iconOptions={iconsContainer}
-      />
-    </panel>
+    <React.Fragment>
+      {alert}
+      <panel>
+        <FormHolder
+          helperText={helperText}
+          inputField={inputField}
+          handleKeyUp={handleKeyUp}
+          onSearch={onSearch}
+          searchTheme={searchTheme}
+          searchCategory={searchCategory}
+          iconOptions={iconsContainer}
+        />
+      </panel>
+    </React.Fragment>
   );
 };
 
