@@ -57,8 +57,8 @@
     "eos-icons": "^5.1.0",
     "eos-icons-react": "^1.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-select": "^4.3.1",
     "react-tooltip": "^4.2.21"
   }
