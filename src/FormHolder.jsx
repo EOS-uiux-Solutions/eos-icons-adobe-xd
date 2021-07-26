@@ -39,6 +39,6 @@ FormHolder.propTypes = {
   searchTheme: any.isRequired,
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
-  iconOptions: element.isRequired,
+  iconOptions: any.isRequired,
 };
 export default FormHolder;

@@ -22,7 +22,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          plugins: ["transform-react-jsx", "transform-object-rest-spread"],
+          plugins: [
+            "@babel/plugin-proposal-object-rest-spread",
+            "@babel/plugin-transform-react-jsx",
+          ],
         },
       },
       {
