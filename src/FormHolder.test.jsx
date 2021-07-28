@@ -6,8 +6,8 @@ import {
   EostypingAnimated,
   Eos10mpOutlined,
 } from "eos-icons-react";
-import { v4 as uuid } from "uuid";
 import FormHolder from "./FormHolder";
+import IconBox from "./IconBox";
 
 let container = null;
 beforeEach(() => {
@@ -24,23 +24,24 @@ afterEach(() => {
 });
 
 it("renders the form and surrounding helper texts", () => {
-  const eosReactIcons = [Eos10mpFilled, EostypingAnimated, Eos10mpOutlined].map(
-    (icon) => (
-      <div className="image-container" key={uuid()}>
-        {icon({ size: "xl" })}
-      </div>
-    )
+  const eosReactIcons = [
+    { EOSReactIcon: Eos10mpFilled, name: "10mp" },
+    { EOSReactIcon: EostypingAnimated, name: "typing" },
+    { EOSReactIcon: Eos10mpOutlined, name: "10mpOutlined" },
+  ];
+  const eosDivs = (
+    <IconBox option="Action" icons={eosReactIcons} copyToClipboard={() => {}} />
   );
   act(() => {
     render(
       <FormHolder
-        helperText={<p>Let&apos;s start by searching abstract.</p>}
-        inputField={() => {}}
+        helperText="Let's start by searching abstract."
+        inputField={{ current: null }}
         handleKeyUp={() => {}}
         onSearch={() => {}}
-        searchTheme={() => {}}
-        searchCategory={() => {}}
-        iconOptions={eosReactIcons}
+        searchTheme={{ current: null }}
+        searchCategory={{ current: null }}
+        iconOptions={eosDivs}
       />,
       container
     );

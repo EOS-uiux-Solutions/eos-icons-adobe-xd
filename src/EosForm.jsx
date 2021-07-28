@@ -1,8 +1,9 @@
 import React from "react";
-import { any, func } from "prop-types";
+import { shape, func, instanceOf } from "prop-types";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
 
+const iconOptions = ["Outlined", "Filled"];
 const EosForm = ({
   inputField,
   searchCategory,
@@ -51,13 +52,16 @@ const EosForm = ({
             <span>Theme</span>
           </div>
           <select
-            value="outlined"
+            value={iconOptions[0]}
             className="select-tag"
             ref={searchTheme}
             onChange={onSearch}
           >
-            <option key="outlined">Outlined</option>
-            <option key="filled">Filled</option>
+            {iconOptions.map((iconOption) => (
+              <option key={iconOption} value={iconOption}>
+                {iconOption}
+              </option>
+            ))}
           </select>
         </label>
       </div>
@@ -69,9 +73,9 @@ const EosForm = ({
 };
 
 EosForm.propTypes = {
-  inputField: any.isRequired,
-  searchCategory: any.isRequired,
-  searchTheme: any.isRequired,
+  inputField: shape({ current: instanceOf(HTMLInputElement) }).isRequired,
+  searchCategory: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
+  searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
 };

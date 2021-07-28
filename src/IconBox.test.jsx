@@ -6,7 +6,6 @@ import {
   EostypingAnimated,
   Eos10mpOutlined,
 } from "eos-icons-react";
-import { v4 as uuid } from "uuid";
 import IconBox from "./IconBox";
 
 let container = null;
@@ -24,18 +23,30 @@ afterEach(() => {
 });
 
 it("renders an iconbox", () => {
-  const eosReactIcons = [Eos10mpFilled, EostypingAnimated, Eos10mpOutlined].map(
-    (icon) => (
-      <div className="image-container" key={uuid()}>
-        {icon({ size: "xl" })}
-      </div>
-    )
-  );
+  const copyToClipboard = jest.fn();
+  const eosReactIcons = [
+    { EOSReactIcon: Eos10mpFilled, name: "10mp" },
+    { EOSReactIcon: EostypingAnimated, name: "typing" },
+    { EOSReactIcon: Eos10mpOutlined, name: "10mpOutlined" },
+  ];
   act(() => {
-    render(<IconBox option="Action" iconDivs={eosReactIcons} />, container);
+    render(
+      <IconBox
+        option="Action"
+        icons={eosReactIcons}
+        copyToClipboard={copyToClipboard}
+      />,
+      container
+    );
   });
   expect(container.querySelectorAll(".image-container").length).toBe(3);
   expect(
     container.querySelector(".category-container span").textContent
   ).toEqual("Action");
+  const iconDiv = document.querySelectorAll(".image-container")[0];
+  act(() => {
+    iconDiv.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+
+  expect(copyToClipboard).toHaveBeenCalledTimes(1);
 });

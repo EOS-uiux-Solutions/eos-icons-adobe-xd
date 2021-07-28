@@ -13,23 +13,19 @@ const App = () => {
   const searchTheme = useRef();
   const inputField = useRef();
   const [helperText, setHelperText] = useState(
-    <p>Let&apos;s start by searching abstract.</p>
+    "Let's start by searching abstract."
   );
-  const [alert, updateAlert] = useState(null);
+  const [alert, updateAlert] = useState(false);
   const [iconsContainer, updateIcons] = useState(null);
   const copyToClipboard = (svg) => {
     copyText(ReactDOMServer.renderToStaticMarkup(svg));
-    updateAlert(
-      <div className="alert">
-        <span>Svg has been copied!!</span>
-      </div>
-    );
+    updateAlert(true);
     setTimeout(() => {
-      updateAlert(null);
+      updateAlert(false);
     }, 1000);
   };
   const searchIconsByName = (name, theme, option) => {
-    const iconDivs = [];
+    const icons = [];
     EOSIconsList[option].forEach((icon) => {
       const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
       const isFilledSelected = theme === "Filled";
@@ -37,33 +33,28 @@ const App = () => {
         icon.name.indexOf(name) !== -1 &&
         (!isFilledSelected || (isFilledSelected && isFilledAvailable))
       ) {
-        const nameIcon = `Eos${icon.name}${
-          isFilledSelected ? "Filled" : "Outlined"
-        }`;
+        const nameIcon = `Eos${icon.name}${theme}`;
         const EOSReactIcon = EOSIcons[nameIcon];
         if (EOSReactIcon !== undefined) {
-          iconDivs.push(
-            <div
-              className="image-container"
-              key={nameIcon}
-              onClick={() => {
-                copyToClipboard(EOSReactIcon({ size: "xxxl" }));
-              }}
-            >
-              {EOSReactIcon({ size: "xl" })}
-            </div>
-          );
+          icons.push({ EOSReactIcon, name: nameIcon });
         }
       }
     });
-    if (iconDivs.length === 0) {
+    if (icons.length === 0) {
       return null;
     }
-    return <IconBox option={option} iconDivs={iconDivs} key={option} />;
+    return (
+      <IconBox
+        option={option}
+        key={option}
+        icons={icons}
+        copyToClipboard={copyToClipboard}
+      />
+    );
   };
   useEffect(() => {
     const createIcons = (option) => {
-      const iconDivs = [];
+      const icons = [];
       const limit =
         EOSIconsList[option].length < 10 ? EOSIconsList[option].length : 10;
       // eslint-disable-next-line no-plusplus
@@ -74,21 +65,18 @@ const App = () => {
           : `Eos${icon.name}Outlined`;
         const EOSReactIcon = EOSIcons[name];
         if (EOSReactIcon !== undefined) {
-          iconDivs.push(
-            <div
-              className="image-container"
-              key={name}
-              onClick={() => {
-                copyToClipboard(EOSReactIcon({ size: "xxxl" }));
-              }}
-            >
-              {EOSReactIcon({ size: "xl" })}
-            </div>
-          );
+          icons.push({ EOSReactIcon, name });
         }
       }
 
-      return <IconBox option={option} iconDivs={iconDivs} key={option} />;
+      return (
+        <IconBox
+          option={option}
+          icons={icons}
+          key={option}
+          copyToClipboard={copyToClipboard}
+        />
+      );
     };
     updateIcons(OptionsList.map((option) => createIcons(option)));
   }, []);
@@ -109,7 +97,7 @@ const App = () => {
   };
 
   const handleKeyUp = (event) => {
-    setHelperText(<p>We would be searching for {inputField.current.value}</p>);
+    setHelperText(`We would be searching for ${inputField.current.value}`);
     if (event.key === "Enter") {
       event.preventDefault();
       onSearch();
@@ -118,7 +106,11 @@ const App = () => {
 
   return (
     <React.Fragment>
-      {alert}
+      {alert ? (
+        <div className="alert">
+          <span>Svg has been copied!!</span>
+        </div>
+      ) : null}
       <panel>
         <FormHolder
           helperText={helperText}
