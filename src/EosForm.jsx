@@ -1,8 +1,9 @@
 import React from "react";
-import { any, func } from "prop-types";
+import { shape, func, instanceOf } from "prop-types";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
 
+const iconOptions = ["Outlined", "Filled"];
 const EosForm = ({
   inputField,
   searchCategory,
@@ -32,17 +33,37 @@ const EosForm = ({
         />
       </label>
       <div className="select-container">
-        <select
-          value={addOptions[0]}
-          className="select-tag"
-          ref={searchCategory}
-        >
-          {options}
-        </select>
-        <select value="outlined" className="select-tag" ref={searchTheme}>
-          <option key="outlined">Outlined</option>
-          <option key="filled">Filled</option>
-        </select>
+        <label htmlFor="category">
+          <div className="label">
+            <span>Category</span>
+          </div>
+          <select
+            value={addOptions[0]}
+            className="select-tag"
+            ref={searchCategory}
+            id="category"
+            onChange={onSearch}
+          >
+            {options}
+          </select>
+        </label>
+        <label htmlFor="theme">
+          <div className="label">
+            <span>Theme</span>
+          </div>
+          <select
+            value={iconOptions[0]}
+            className="select-tag"
+            ref={searchTheme}
+            onChange={onSearch}
+          >
+            {iconOptions.map((iconOption) => (
+              <option key={iconOption} value={iconOption}>
+                {iconOption}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <button type="button" className="search" onClick={onSearch}>
         Search
@@ -52,9 +73,9 @@ const EosForm = ({
 };
 
 EosForm.propTypes = {
-  inputField: any.isRequired,
-  searchCategory: any.isRequired,
-  searchTheme: any.isRequired,
+  inputField: shape({ current: instanceOf(HTMLInputElement) }).isRequired,
+  searchCategory: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
+  searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
 };

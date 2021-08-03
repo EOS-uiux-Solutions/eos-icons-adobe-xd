@@ -21,12 +21,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 14
-        uses: actions/setup-node@v1
-        with:
-          # no support for lts as of now with github actions.
-          # issue link : https://github.com/actions/setup-node/issues/26
-          node-version: "14"
       - name: Npm install
         run: npm install
 
@@ -35,6 +29,9 @@ jobs:
 
       - name: Check Linting
         run: npx eslint .
+
+      - name: Run tests
+        run: npm test
 
       - name: Build
         run: npm run prod
