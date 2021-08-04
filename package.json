@@ -55,7 +55,7 @@
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
     "eos-icons": "^5.1.0",
-    "eos-icons-react": "^1.0.0",
+    "eos-icons-react": "2.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

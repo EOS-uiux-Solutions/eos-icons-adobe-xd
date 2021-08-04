@@ -33,7 +33,7 @@ const App = () => {
         icon.name.indexOf(name) !== -1 &&
         (!isFilledSelected || (isFilledSelected && isFilledAvailable))
       ) {
-        const nameIcon = `Eos${icon.name}${theme}`;
+        const nameIcon = `Eos_${icon.name}_${theme}`.toUpperCase();
         const EOSReactIcon = EOSIcons[nameIcon];
         if (EOSReactIcon !== undefined) {
           icons.push({ EOSReactIcon, name: nameIcon });
@@ -60,9 +60,9 @@ const App = () => {
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < limit; i++) {
         const icon = EOSIconsList[option][i];
-        const name = EOSIcons[`Eos${icon.name}Filled`]
-          ? `Eos${icon.name}Filled`
-          : `Eos${icon.name}Outlined`;
+        const name = EOSIcons[`Eos_${icon.name}_Filled`.toUpperCase()]
+          ? `Eos_${icon.name}_Filled`.toUpperCase()
+          : `Eos_${icon.name}_Outlined`.toUpperCase();
         const EOSReactIcon = EOSIcons[name];
         if (EOSReactIcon !== undefined) {
           icons.push({ EOSReactIcon, name });
@@ -81,6 +81,10 @@ const App = () => {
     updateIcons(OptionsList.map((option) => createIcons(option)));
   }, []);
 
+  const clearValue = () => {
+    inputField.current.value = "";
+    setHelperText("Let's start by searching abstract.");
+  };
   const onSearch = () => {
     const category = searchCategory.current.value;
     const theme = searchTheme.current.value;
@@ -98,7 +102,8 @@ const App = () => {
 
   const handleKeyUp = (event) => {
     setHelperText(`We would be searching for ${inputField.current.value}`);
-    if (event.key === "Enter") {
+    console.log(event.key);
+    if (event.key === "ArrowRight") {
       event.preventDefault();
       onSearch();
     }
@@ -120,6 +125,7 @@ const App = () => {
           searchTheme={searchTheme}
           searchCategory={searchCategory}
           iconOptions={iconsContainer}
+          clearValue={clearValue}
         />
       </panel>
     </React.Fragment>

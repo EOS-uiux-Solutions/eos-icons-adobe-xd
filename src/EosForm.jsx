@@ -1,5 +1,6 @@
 import React from "react";
 import { shape, func, instanceOf } from "prop-types";
+import { EOS_CANCEL_OUTLINED } from "eos-icons-react";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
 
@@ -10,6 +11,7 @@ const EosForm = ({
   searchTheme,
   handleKeyUp,
   onSearch,
+  clearValue,
 }) => {
   const addOptions = ["all", ...OptionsList];
   const options = addOptions.map((el) => (
@@ -24,6 +26,8 @@ const EosForm = ({
         <div className="label">
           <span>Search icons</span>
         </div>
+      </label>
+      <div className="input-box" id="searchInput">
         <input
           ref={inputField}
           type="text"
@@ -31,7 +35,10 @@ const EosForm = ({
           placeholder="Search..."
           onKeyUp={handleKeyUp}
         />
-      </label>
+        <div onClick={clearValue}>
+          <EOS_CANCEL_OUTLINED />
+        </div>
+      </div>
       <div className="select-container">
         <label htmlFor="category">
           <div className="label">
@@ -78,5 +85,6 @@ EosForm.propTypes = {
   searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
+  clearValue: func.isRequired,
 };
 export default EosForm;
