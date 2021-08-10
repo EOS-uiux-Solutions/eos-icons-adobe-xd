@@ -1,5 +1,5 @@
 import React from "react";
-import { element, func, string, shape, instanceOf } from "prop-types";
+import { element, func, string, shape, instanceOf, arrayOf } from "prop-types";
 import EosForm from "./EosForm";
 
 const FormHolder = ({
@@ -9,6 +9,7 @@ const FormHolder = ({
   onSearch,
   searchTheme,
   searchCategory,
+  clearValue,
   iconOptions = null,
 }) => (
   <div className="iconDialog">
@@ -27,6 +28,7 @@ const FormHolder = ({
       onSearch={onSearch}
       searchTheme={searchTheme}
       searchCategory={searchCategory}
+      clearValue={clearValue}
     />
     {iconOptions}
   </div>
@@ -39,7 +41,8 @@ FormHolder.propTypes = {
   searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
-  iconOptions: element,
+  clearValue: func.isRequired,
+  iconOptions: arrayOf(element),
 };
 FormHolder.defaultProps = {
   iconOptions: null,

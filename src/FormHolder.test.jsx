@@ -2,9 +2,9 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import {
-  Eos10mpFilled,
-  EostypingAnimated,
-  Eos10mpOutlined,
+  EOS_10MP_FILLED,
+  EOS_TYPING_ANIMATED,
+  EOS_10MP_OUTLINED,
 } from "eos-icons-react";
 import FormHolder from "./FormHolder";
 import IconBox from "./IconBox";
@@ -25,9 +25,9 @@ afterEach(() => {
 
 it("renders the form and surrounding helper texts", () => {
   const eosReactIcons = [
-    { EOSReactIcon: Eos10mpFilled, name: "10mp" },
-    { EOSReactIcon: EostypingAnimated, name: "typing" },
-    { EOSReactIcon: Eos10mpOutlined, name: "10mpOutlined" },
+    { EOSReactIcon: EOS_10MP_FILLED, name: "10mp" },
+    { EOSReactIcon: EOS_TYPING_ANIMATED, name: "typing" },
+    { EOSReactIcon: EOS_10MP_OUTLINED, name: "10mpOutlined" },
   ];
   const eosDivs = (
     <IconBox option="Action" icons={eosReactIcons} copyToClipboard={() => {}} />
@@ -42,6 +42,7 @@ it("renders the form and surrounding helper texts", () => {
         searchTheme={{ current: null }}
         searchCategory={{ current: null }}
         iconOptions={eosDivs}
+        clearValue={() => {}}
       />,
       container
     );
