@@ -1,5 +1,5 @@
 import React from "react";
-import { element, func, string, shape, instanceOf, arrayOf } from "prop-types";
+import { func, string, shape, instanceOf, node } from "prop-types";
 import EosForm from "./EosForm";
 
 const FormHolder = ({
@@ -42,7 +42,7 @@ FormHolder.propTypes = {
   handleKeyUp: func.isRequired,
   onSearch: func.isRequired,
   clearValue: func.isRequired,
-  iconOptions: arrayOf(element),
+  iconOptions: node,
 };
 FormHolder.defaultProps = {
   iconOptions: null,
