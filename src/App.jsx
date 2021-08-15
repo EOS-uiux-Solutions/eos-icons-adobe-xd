@@ -35,7 +35,7 @@ const App = () => {
       ) {
         const nameIcon = `Eos_${icon.name}_${theme}`.toUpperCase();
         const EOSReactIcon = EOSIcons[nameIcon];
-        if (EOSReactIcon !== undefined) {
+        if (EOSReactIcon) {
           icons.push({ EOSReactIcon, name: nameIcon });
         }
       }
@@ -63,7 +63,7 @@ const App = () => {
         ? `Eos_${icon.name}_Filled`.toUpperCase()
         : `Eos_${icon.name}_Outlined`.toUpperCase();
       const EOSReactIcon = EOSIcons[name];
-      if (EOSReactIcon !== undefined) {
+      if (EOSReactIcon) {
         icons.push({ EOSReactIcon, name });
       }
     }

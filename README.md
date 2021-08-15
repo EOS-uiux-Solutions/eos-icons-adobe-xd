@@ -2,6 +2,10 @@
 
 An Adobe XD plugin to use all of EOS-icons from within the application
 
+[![build-run](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml/badge.svg)](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Steps to build it locally
 
 # Latest
