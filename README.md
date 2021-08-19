@@ -6,6 +6,8 @@ An Adobe XD plugin to use all of EOS-icons from within the application
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![codecov](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd/branch/main/graph/badge.svg?token=F5V5O1DUTT)](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd)
+
 ## Steps to build it locally
 
 # Latest
