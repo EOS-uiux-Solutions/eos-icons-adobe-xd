@@ -4,7 +4,7 @@ import { EOS_CANCEL_OUTLINED } from "eos-icons-react";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
 
-const iconOptions = ["Outlined", "Filled"];
+const iconOptions = ["Filled", "Outlined"];
 const EosForm = ({
   inputField,
   searchCategory,
