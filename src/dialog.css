@@ -43,6 +43,27 @@
   flex-wrap: wrap;
 }
 
+.image-container .image-container-text {
+  visibility: hidden;
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position:absolute;
+  z-index: 1;
+}
+
+.text-container {
+  position: relative;
+  margin-top: 25px;
+}
+
+.image-container:hover .image-container-text {
+  visibility: visible;
+}
+
 .image-container {
   width: 40px;
   height: 40px;
@@ -50,6 +71,10 @@
   justify-content: center;
   align-items: center;
   margin: 0 10px 10px 0;
+}
+
+.image-container:hover {
+  background-color: #d3d3d3b8;
 }
 
 .category-container span {
