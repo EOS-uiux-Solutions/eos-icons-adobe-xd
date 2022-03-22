@@ -4,7 +4,7 @@ import { EOS_CANCEL_OUTLINED } from "eos-icons-react";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
 
-const iconOptions = ["Outlined", "Filled"];
+const iconOptions = ["All", "Filled", "Outlined"];
 const EosForm = ({
   inputField,
   searchCategory,
@@ -59,7 +59,7 @@ const EosForm = ({
             <span>Theme</span>
           </div>
           <select
-            value={iconOptions[0]}
+            value={iconOptions[1]}
             className="select-tag"
             ref={searchTheme}
             onChange={onSearch}

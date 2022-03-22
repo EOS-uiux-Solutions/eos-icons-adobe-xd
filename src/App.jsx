@@ -29,6 +29,21 @@ const App = () => {
     EOSIconsList[option].forEach((icon) => {
       const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
       const isFilledSelected = theme === "Filled";
+      if (theme === "All") {
+        const nameFilledIcon = `Eos_${icon.name}_FILLED`.toUpperCase();
+        const nameOutlinedIcon = `Eos_${icon.name}_OUTLINED`.toUpperCase();
+        const EOSFilledIcon = EOSIcons[nameFilledIcon];
+        const EOSOutlinedIcon = EOSIcons[nameOutlinedIcon];
+        if (EOSFilledIcon) {
+          icons.push({ EOSReactIcon: EOSFilledIcon, name: nameFilledIcon });
+        }
+        if (EOSOutlinedIcon) {
+          icons.push({
+            EOSReactIcon: EOSOutlinedIcon,
+            name: nameOutlinedIcon,
+          });
+        }
+      }
       if (
         icon.name.indexOf(name) !== -1 &&
         (!isFilledSelected || (isFilledSelected && isFilledAvailable))
