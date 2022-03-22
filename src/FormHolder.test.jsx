@@ -52,5 +52,5 @@ it("renders the form and surrounding helper texts", () => {
     "Let's start by searching abstract."
   );
   expect(container.querySelectorAll(".select-tag")[0].value).toBe("all");
-  expect(container.querySelectorAll(".select-tag")[1].value).toBe("Outlined");
+  expect(container.querySelectorAll(".select-tag")[1].value).toBe("Filled");
 });
