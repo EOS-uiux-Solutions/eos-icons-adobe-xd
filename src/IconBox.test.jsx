@@ -25,9 +25,13 @@ afterEach(() => {
 it("renders an iconbox", () => {
   const copyToClipboard = jest.fn();
   const eosReactIcons = [
-    { EOSReactIcon: EOS_10MP_FILLED, name: "10mp" },
-    { EOSReactIcon: EOS_TYPING_ANIMATED, name: "typing" },
-    { EOSReactIcon: EOS_10MP_OUTLINED, name: "10mpOutlined" },
+    { EOSReactIcon: EOS_10MP_FILLED, name: "10mp", showName: "10mp" },
+    { EOSReactIcon: EOS_TYPING_ANIMATED, name: "typing", showName: "typing" },
+    {
+      EOSReactIcon: EOS_10MP_OUTLINED,
+      name: "10mpOutlined",
+      showName: "10mpOutlined",
+    },
   ];
   act(() => {
     render(
