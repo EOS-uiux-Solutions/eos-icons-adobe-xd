@@ -25,12 +25,16 @@ afterEach(() => {
 
 it("renders the form and surrounding helper texts", () => {
   const eosReactIcons = [
-    { EOSReactIcon: EOS_10MP_FILLED, name: "10mp", showName: "10mp" },
-    { EOSReactIcon: EOS_TYPING_ANIMATED, name: "typing", showName: "typing" },
+    { EOSReactIcon: EOS_10MP_FILLED, name: "10mp", displayName: "10mp" },
+    {
+      EOSReactIcon: EOS_TYPING_ANIMATED,
+      name: "typing",
+      displayName: "typing",
+    },
     {
       EOSReactIcon: EOS_10MP_OUTLINED,
       name: "10mpOutlined",
-      showName: "10mpOutlined",
+      displayName: "10mpOutlined",
     },
   ];
   const eosDivs = (

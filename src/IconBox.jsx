@@ -2,7 +2,7 @@ import React from "react";
 import { string, arrayOf, func, shape } from "prop-types";
 import "./dialog.css";
 
-const IconDiv = ({ EOSReactIcon, copyToClipboard, showName }) => (
+const IconDiv = ({ EOSReactIcon, copyToClipboard, displayName }) => (
   <div
     className="image-container"
     onClick={() => {
@@ -10,7 +10,7 @@ const IconDiv = ({ EOSReactIcon, copyToClipboard, showName }) => (
     }}
   >
     <div className="text-container">
-      <span className="image-container-text">{showName}</span>
+      <span className="image-container-text">{displayName}</span>
     </div>
     {EOSReactIcon({ size: "xl" })}
   </div>
@@ -19,15 +19,15 @@ const IconDiv = ({ EOSReactIcon, copyToClipboard, showName }) => (
 IconDiv.propTypes = {
   EOSReactIcon: func.isRequired,
   copyToClipboard: func.isRequired,
-  showName: string.isRequired,
+  displayName: string.isRequired,
 };
 const IconBox = ({ option, icons, copyToClipboard }) => {
-  const iconDivs = icons.map(({ EOSReactIcon, name, showName }) => (
+  const iconDivs = icons.map(({ EOSReactIcon, name, displayName }) => (
     <IconDiv
       key={name}
       copyToClipboard={copyToClipboard}
       EOSReactIcon={EOSReactIcon}
-      showName={showName}
+      displayName={displayName}
     />
   ));
   return (

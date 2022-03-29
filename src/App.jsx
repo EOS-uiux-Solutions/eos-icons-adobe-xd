@@ -39,14 +39,14 @@ const App = () => {
           icons.push({
             EOSReactIcon: EOSFilledIcon,
             name: nameFilledIcon,
-            showName: iconName,
+            displayName: iconName,
           });
         }
         if (EOSOutlinedIcon) {
           icons.push({
             EOSReactIcon: EOSOutlinedIcon,
             name: nameOutlinedIcon,
-            showName: iconName,
+            displayName: iconName,
           });
         }
       }
@@ -57,7 +57,7 @@ const App = () => {
         const nameIcon = `Eos_${icon.name}_${theme}`.toUpperCase();
         const EOSReactIcon = EOSIcons[nameIcon];
         if (EOSReactIcon) {
-          icons.push({ EOSReactIcon, name: nameIcon, showName: iconName });
+          icons.push({ EOSReactIcon, name: nameIcon, displayName: iconName });
         }
       }
     });
@@ -85,7 +85,7 @@ const App = () => {
         : `Eos_${icon.name}_Outlined`.toUpperCase();
       const EOSReactIcon = EOSIcons[name];
       if (EOSReactIcon) {
-        icons.push({ EOSReactIcon, name, showName: icon.name });
+        icons.push({ EOSReactIcon, name, displayName: icon.name });
       }
     }
 
