@@ -15,6 +15,7 @@ const App = () => {
   const [helperText, setHelperText] = useState(
     "Let's start by searching abstract."
   );
+  const [timer, setTimer] = useState(null);
   const [alert, updateAlert] = useState(false);
   const [iconsContainer, updateIcons] = useState(null);
   const copyToClipboard = useCallback((svg) => {
@@ -24,6 +25,18 @@ const App = () => {
       updateAlert(false);
     }, 1000);
   }, []);
+  const debounce = useCallback(
+    (func, timeout = 300) =>
+      () => {
+        clearTimeout(timer);
+        setTimer(
+          setTimeout(() => {
+            func.apply(this);
+          }, timeout)
+        );
+      },
+    []
+  );
   const searchIconsByName = useCallback((name, theme, option) => {
     const icons = [];
     EOSIconsList[option].forEach((icon) => {
@@ -123,12 +136,8 @@ const App = () => {
     updateIcons(iconList);
   }, []);
 
-  const handleKeyUp = useCallback((event) => {
-    setHelperText(`We would be searching for ${inputField.current.value}`);
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      onSearch();
-    }
+  const handleOnChange = useCallback(() => {
+    debounce(onSearch)();
   }, []);
 
   return (
@@ -142,7 +151,7 @@ const App = () => {
         <FormHolder
           helperText={helperText}
           inputField={inputField}
-          handleKeyUp={handleKeyUp}
+          handleOnChange={handleOnChange}
           onSearch={onSearch}
           searchTheme={searchTheme}
           searchCategory={searchCategory}
