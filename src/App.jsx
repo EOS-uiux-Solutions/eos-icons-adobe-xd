@@ -24,6 +24,15 @@ const App = () => {
       updateAlert(false);
     }, 1000);
   }, []);
+  const debounce = useCallback((func, timeout = 300) => {
+    let timer;
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this);
+      }, timeout);
+    };
+  }, []);
   const searchIconsByName = useCallback((name, theme, option) => {
     const icons = [];
     EOSIconsList[option].forEach((icon) => {
@@ -123,12 +132,8 @@ const App = () => {
     updateIcons(iconList);
   }, []);
 
-  const handleKeyUp = useCallback((event) => {
-    setHelperText(`We would be searching for ${inputField.current.value}`);
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      onSearch();
-    }
+  const handleOnChange = useCallback(() => {
+    debounce(onSearch)();
   }, []);
 
   return (
@@ -142,7 +147,7 @@ const App = () => {
         <FormHolder
           helperText={helperText}
           inputField={inputField}
-          handleKeyUp={handleKeyUp}
+          handleOnChange={handleOnChange}
           onSearch={onSearch}
           searchTheme={searchTheme}
           searchCategory={searchCategory}

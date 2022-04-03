@@ -5,7 +5,7 @@ import EosForm from "./EosForm";
 const FormHolder = ({
   helperText,
   inputField,
-  handleKeyUp,
+  handleOnChange,
   onSearch,
   searchTheme,
   searchCategory,
@@ -24,7 +24,7 @@ const FormHolder = ({
     <p>{helperText}</p>
     <EosForm
       inputField={inputField}
-      handleKeyUp={handleKeyUp}
+      handleOnChange={handleOnChange}
       onSearch={onSearch}
       searchTheme={searchTheme}
       searchCategory={searchCategory}
@@ -39,7 +39,7 @@ FormHolder.propTypes = {
   inputField: shape({ current: instanceOf(HTMLInputElement) }).isRequired,
   searchCategory: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
-  handleKeyUp: func.isRequired,
+  handleOnChange: func.isRequired,
   onSearch: func.isRequired,
   clearValue: func.isRequired,
   iconOptions: node,
