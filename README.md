@@ -2,15 +2,18 @@
 
 An Adobe XD plugin to use all of EOS-icons from within the application
 
-[![build-run](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml/badge.svg)](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml)
+[![build-run](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml/badge.svg)](https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/actions/workflows/build.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd/branch/main/graph/badge.svg?token=F5V5O1DUTT)](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Guidelines to run the Plugin Locally
 
-[![codecov](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd/branch/main/graph/badge.svg?token=F5V5O1DUTT)](https://codecov.io/gh/EOS-uiux-Solutions/eos-icons-adobe-xd)
+Below are the steps to get your plugin running
 
-## Steps to build it locally
+The plugin uses NPM in creating JavaScript applications.
 
-# Latest
+First, download Node.js which comes with NPM. This will allow you to various
+libraries. You can find the download link here:
+
+https://nodejs.org/en/download/
 
 - Clone the repo in the folder of your choice.
 - Run `npm i` and `npm run watch`.
@@ -21,6 +24,20 @@ An Adobe XD plugin to use all of EOS-icons from within the application
 - Add the `manifest.json` from the dist folder.
 - Click on 3 dot icon and select `Load`.
 - Go back to `Adobe XD` and try it out! :)
+
+## Keeping up with the Test Files
+
+To make sure the test files are working correctly after the latest changes, run the following command: `npm test`
+
+## Check Linting Errors
+
+Run the following command to check if there are any linting errors: `npx eslint .`
+
+## JS and CSS Quality Assurance
+
+Before submitting a PR/MR make sure your code is compliant with our JS and CSS rules by running: `npm run checkFormat` and `npx prettier --check .`
+
+If you encounter any deploy error in JS try fixing it by running `npx prettier --write .`
 
 ### FAQs
 
