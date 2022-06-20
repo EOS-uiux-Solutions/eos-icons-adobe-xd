@@ -31,7 +31,7 @@ To make sure the test files are working correctly after the latest changes, run 
 
 ## Check Linting Errors
 
-Run the following command to check if there are any linting errors: `npx eslint .`
+Run the following command to check if there are any linting errors: `npm run lint` or `npx eslint .`
 
 ## JS and CSS Quality Assurance
 

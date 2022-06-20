@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "jest",
+    "lint": "eslint .",
     "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x npm run build",
     "build": "webpack --mode development",
     "prod": "webpack --mode production"
