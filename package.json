@@ -12,20 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Abhirup-99/eos-icons-adobe-xd.git"
+    "url": "git+https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Abhirup-99/eos-icons-adobe-xd/issues"
+    "url": "https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd/issues"
   },
-  "homepage": "https://github.com/Abhirup-99/eos-icons-adobe-xd#readme",
+  "homepage": "https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd#readme",
   "husky": {
     "hooks": {
       "pre-commit": "npx prettier --write . && npx eslint ."
     }
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.4",
+    "@semantic-release/release-notes-generator": "^10.0.3",
     "@babel/core": "^7.14.8",
     "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
     "@babel/plugin-transform-react-jsx": "^7.14.5",
@@ -62,5 +66,21 @@
     "react-dom": "^17.0.2",
     "react-select": "^4.3.1",
     "react-tooltip": "^4.2.21"
+  },
+  "release": {
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "eslint"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "branches": [
+      "main"
+    ]
   }
 }
