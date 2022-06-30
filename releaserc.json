@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "eslint",
+        "releaseRules": [
+          {
+            "tag": "New",
+            "release": "minor"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator"
+  ]
+}
