@@ -1,12 +1,14 @@
 .dialog form {
   width: 360px;
 }
+
 .h1 {
   align-items: center;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
 }
+
 .label {
   margin: 0 8px;
 }
@@ -29,6 +31,7 @@
   width: 45%;
   padding-right: 5%;
 }
+
 .select-container label:first-of-type {
   width: 50%;
 }

@@ -9,7 +9,7 @@ const EosForm = ({
   inputField,
   searchCategory,
   searchTheme,
-  handleKeyUp,
+  handleOnChange,
   onSearch,
   clearValue,
 }) => {
@@ -33,7 +33,7 @@ const EosForm = ({
           type="text"
           id="searchInput"
           placeholder="Search..."
-          onKeyUp={handleKeyUp}
+          onChange={handleOnChange}
         />
         <div onClick={clearValue}>
           <EOS_CANCEL_OUTLINED />
@@ -72,9 +72,6 @@ const EosForm = ({
           </select>
         </label>
       </div>
-      <button type="button" className="search" onClick={onSearch}>
-        Search
-      </button>
     </div>
   );
 };
@@ -83,7 +80,7 @@ EosForm.propTypes = {
   inputField: shape({ current: instanceOf(HTMLInputElement) }).isRequired,
   searchCategory: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
   searchTheme: shape({ current: instanceOf(HTMLSelectElement) }).isRequired,
-  handleKeyUp: func.isRequired,
+  handleOnChange: func.isRequired,
   onSearch: func.isRequired,
   clearValue: func.isRequired,
 };

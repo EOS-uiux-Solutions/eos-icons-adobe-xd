@@ -45,7 +45,7 @@ it("renders the form and surrounding helper texts", () => {
       <FormHolder
         helperText="Let's start by searching abstract."
         inputField={{ current: null }}
-        handleKeyUp={() => {}}
+        handleOnChange={() => {}}
         onSearch={() => {}}
         searchTheme={{ current: null }}
         searchCategory={{ current: null }}

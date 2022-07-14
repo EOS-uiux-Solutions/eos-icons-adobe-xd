@@ -7,6 +7,7 @@ import FormHolder from "./FormHolder";
 import EOSIconsList from "./converted-icons.json";
 import OptionsList from "./optionList.json";
 import IconBox from "./IconBox";
+import useDebounce from "../hooks/use-debounce";
 
 const App = () => {
   const searchCategory = useRef();
@@ -29,35 +30,39 @@ const App = () => {
     EOSIconsList[option].forEach((icon) => {
       const isFilledAvailable = "hasOutlined" in icon && icon.hasOutlined;
       const isFilledSelected = theme === "Filled";
-      const iconName = icon.name;
-      if (theme === "All") {
-        const nameFilledIcon = `Eos_${icon.name}_FILLED`.toUpperCase();
-        const nameOutlinedIcon = `Eos_${icon.name}_OUTLINED`.toUpperCase();
-        const EOSFilledIcon = EOSIcons[nameFilledIcon];
-        const EOSOutlinedIcon = EOSIcons[nameOutlinedIcon];
-        if (EOSFilledIcon) {
-          icons.push({
-            EOSReactIcon: EOSFilledIcon,
-            name: nameFilledIcon,
-            displayName: iconName,
-          });
-        }
-        if (EOSOutlinedIcon) {
-          icons.push({
-            EOSReactIcon: EOSOutlinedIcon,
-            name: nameOutlinedIcon,
-            displayName: iconName,
-          });
-        }
+      let iconName = icon.name;
+      while (iconName.includes("_")) {
+        iconName = iconName.replace("_", " ");
       }
-      if (
-        icon.name.indexOf(name) !== -1 &&
-        (!isFilledSelected || (isFilledSelected && isFilledAvailable))
-      ) {
-        const nameIcon = `Eos_${icon.name}_${theme}`.toUpperCase();
-        const EOSReactIcon = EOSIcons[nameIcon];
-        if (EOSReactIcon) {
-          icons.push({ EOSReactIcon, name: nameIcon, displayName: iconName });
+      if (icon.name.indexOf(name) !== -1) {
+        if (theme === "All") {
+          const nameFilledIcon = `Eos_${icon.name}_FILLED`.toUpperCase();
+          const nameOutlinedIcon = `Eos_${icon.name}_OUTLINED`.toUpperCase();
+          const EOSFilledIcon = EOSIcons[nameFilledIcon];
+          const EOSOutlinedIcon = EOSIcons[nameOutlinedIcon];
+          if (EOSFilledIcon) {
+            icons.push({
+              EOSReactIcon: EOSFilledIcon,
+              name: nameFilledIcon,
+              showName: iconName,
+            });
+          }
+          if (EOSOutlinedIcon) {
+            icons.push({
+              EOSReactIcon: EOSOutlinedIcon,
+              name: nameOutlinedIcon,
+              showName: iconName,
+            });
+          }
+        } else if (
+          !isFilledSelected ||
+          (isFilledSelected && isFilledAvailable)
+        ) {
+          const nameIcon = `Eos_${icon.name}_${theme}`.toUpperCase();
+          const EOSReactIcon = EOSIcons[nameIcon];
+          if (EOSReactIcon) {
+            icons.push({ EOSReactIcon, name: nameIcon, displayName: iconName });
+          }
         }
       }
     });
@@ -123,12 +128,8 @@ const App = () => {
     updateIcons(iconList);
   }, []);
 
-  const handleKeyUp = useCallback((event) => {
-    setHelperText(`We would be searching for ${inputField.current.value}`);
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      onSearch();
-    }
+  const handleOnChange = useCallback(() => {
+    useDebounce(onSearch);
   }, []);
 
   return (
@@ -142,7 +143,7 @@ const App = () => {
         <FormHolder
           helperText={helperText}
           inputField={inputField}
-          handleKeyUp={handleKeyUp}
+          handleOnChange={handleOnChange}
           onSearch={onSearch}
           searchTheme={searchTheme}
           searchCategory={searchCategory}
