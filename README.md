@@ -53,3 +53,10 @@ then:
 - Paste again.
 - Switch off `Responsive Resize`.
 - Resize now.
+
+## Semantic Release
+
+Semantic Release helps in automating the whole package release workflow. semantic-release uses the commit messages to determine the consumer impact of changes in the codebase.
+
+To commit a release follow the link:
+https://github.com/EOS-uiux-Solutions/wiki/blob/main/Semantic-Releases.md
