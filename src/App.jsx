@@ -118,7 +118,7 @@ const App = () => {
     const theme = searchTheme.current.value;
     const name = inputField.current.value;
     let iconList;
-    if (category === "all") {
+    if (category === "All") {
       iconList = OptionsList.map((option) =>
         searchIconsByName(name, theme, option)
       );
