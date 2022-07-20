@@ -45,7 +45,7 @@ it("renders the form and surrounding helper texts", () => {
       <FormHolder
         helperText="Let's start by searching abstract."
         inputField={{ current: null }}
-        handleKeyUp={() => {}}
+        handleOnChange={() => {}}
         onSearch={() => {}}
         searchTheme={{ current: null }}
         searchCategory={{ current: null }}
@@ -59,6 +59,6 @@ it("renders the form and surrounding helper texts", () => {
   expect(container.querySelectorAll(".iconDialog p")[1].textContent).toBe(
     "Let's start by searching abstract."
   );
-  expect(container.querySelectorAll(".select-tag")[0].value).toBe("all");
+  expect(container.querySelectorAll(".select-tag")[0].value).toBe("All");
   expect(container.querySelectorAll(".select-tag")[1].value).toBe("Filled");
 });

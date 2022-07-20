@@ -1,19 +1,18 @@
 .dialog form {
   width: 360px;
 }
+
 .h1 {
   align-items: center;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
 }
-.label {
-  margin: 0 8px;
-}
 
-.iconDialog svg {
-  width: 50px;
-  height: 50px;
+.label {
+  /* margin: 0 8px; */
+  margin-top: 5px;
+  margin-bottom: -10px;
 }
 
 .select-tag {
@@ -29,6 +28,7 @@
   width: 45%;
   padding-right: 5%;
 }
+
 .select-container label:first-of-type {
   width: 50%;
 }
@@ -77,6 +77,10 @@
   visibility: visible;
 }
 
+.category-container {
+  margin-top: 10px;
+}
+
 .category-container span {
   font-weight: 700;
   font-size: 16px;
@@ -92,10 +96,6 @@
 }
 
 .input-box {
-  display: flex;
-  align-items: center;
-}
-
-.input-box input {
-  width: 70%;
+  margin-right: 10px;
+  margin-left: -23px;
 }

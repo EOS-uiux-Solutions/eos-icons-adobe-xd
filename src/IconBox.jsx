@@ -30,10 +30,16 @@ const IconBox = ({ option, icons, copyToClipboard }) => {
       displayName={displayName}
     />
   ));
+
+  const optionName = option.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+
   return (
     <div key={option}>
       <div className="category-container">
-        <span>{option}</span>
+        <span>{optionName}</span>
       </div>
       <div className="image-box">{iconDivs}</div>
     </div>
