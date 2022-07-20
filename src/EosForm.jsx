@@ -4,6 +4,12 @@ import OptionsList from "./optionList.json";
 import "./dialog.css";
 
 const iconOptions = ["All", "Filled", "Outlined"];
+const capitalizeLetter = (string) =>
+  string.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+
 const EosForm = ({
   inputField,
   searchCategory,
@@ -14,10 +20,7 @@ const EosForm = ({
   const addOptions = ["All", ...OptionsList];
   const options = addOptions.map((el) => (
     <option value={el} key={el}>
-      {el.replace(
-        /\w\S*/g,
-        (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-      )}
+      {capitalizeLetter(el)}
     </option>
   ));
 

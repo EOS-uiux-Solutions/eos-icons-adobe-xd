@@ -1,17 +1,19 @@
 {
-  "id": "b5440deb",
+  "id": "f7ecf6b5",
   "name": "EOS-icons",
   "version": "1.0.0",
   "description": "EOS icons XD plugin",
   "summary": "Thank you for using EOS Icons. For any issues, feel free to check out https://eos-icons.com/.",
-  "languages": ["en"],
-  "author": "Abhirup Pal",
+  "languages": [
+    "en"
+  ],
+  "author": "EOS Icons",
   "helpUrl": "https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd",
   "icons": [
     {
-      "width": 96,
-      "height": 96,
-      "path": "images/icon.png"
+      "path": "images/icon@1x.png",
+      "width": 24,
+      "height": 24
     }
   ],
   "host": {
