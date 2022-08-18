@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { shape, func, instanceOf } from "prop-types";
 import OptionsList from "./optionList.json";
 import "./dialog.css";
@@ -18,6 +18,8 @@ const EosForm = ({
   onSearch,
 }) => {
   const addOptions = ["All", ...OptionsList];
+  const [category, setCategory] = useState(addOptions[0]);
+  const [theme, setTheme] = useState(iconOptions[1]);
   const options = addOptions.map((el) => (
     <option value={el} key={el}>
       {capitalizeLetter(el)}
@@ -46,11 +48,14 @@ const EosForm = ({
             <span>Category</span>
           </div>
           <select
-            value={addOptions[0]}
+            value={category}
             className="select-tag"
             ref={searchCategory}
             id="category"
-            onChange={onSearch}
+            onChange={(event) => {
+              setCategory(event.target.value);
+              onSearch();
+            }}
           >
             {options}
           </select>
@@ -60,10 +65,13 @@ const EosForm = ({
             <span>Theme</span>
           </div>
           <select
-            value={iconOptions[1]}
+            value={theme}
             className="select-tag"
             ref={searchTheme}
-            onChange={onSearch}
+            onChange={(event) => {
+              setTheme(event.target.value);
+              onSearch();
+            }}
           >
             {iconOptions.map((iconOption) => (
               <option key={iconOption} value={iconOption}>

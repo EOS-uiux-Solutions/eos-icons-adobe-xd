@@ -1,12 +1,13 @@
 {
   "id": "f7ecf6b5",
-  "name": "EOS-icons",
+  "name": "EOS Icons",
   "version": "1.0.0",
   "description": "EOS icons XD plugin",
   "summary": "Thank you for using EOS Icons. For any issues, feel free to check out https://eos-icons.com/.",
   "languages": [
     "en"
   ],
+  "website": "https://eos-icons.com/",
   "author": "EOS Icons",
   "helpUrl": "https://github.com/EOS-uiux-Solutions/eos-icons-adobe-xd",
   "icons": [
@@ -14,16 +15,36 @@
       "path": "images/icon@1x.png",
       "width": 24,
       "height": 24
+    },
+    {
+      "path": "images/icon@2x.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "path": "images/icon@3x.png",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "path": "images/icon@4x.png",
+      "width": 144,
+      "height": 144
+    },
+    {
+      "path": "images/icon@5x.png",
+      "width": 192,
+      "height": 192
     }
   ],
   "host": {
     "app": "XD",
-    "minVersion": "13.0.0"
+    "minVersion": "13.0"
   },
   "uiEntryPoints": [
     {
       "type": "panel",
-      "label": "Eos-icons",
+      "label": "EOS Icons",
       "panelId": "panel",
       "shortcut": {
         "mac": "Ctrl+Alt+D",
