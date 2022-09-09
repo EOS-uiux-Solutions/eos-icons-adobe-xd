@@ -44,14 +44,14 @@ const App = () => {
             icons.push({
               EOSReactIcon: EOSFilledIcon,
               name: nameFilledIcon,
-              showName: iconName,
+              displayName: iconName,
             });
           }
           if (EOSOutlinedIcon) {
             icons.push({
               EOSReactIcon: EOSOutlinedIcon,
               name: nameOutlinedIcon,
-              showName: iconName,
+              displayName: iconName,
             });
           }
         } else if (
@@ -103,10 +103,17 @@ const App = () => {
       />
     );
   }, []);
-
   useEffect(() => {
-    updateIcons(OptionsList.map((option) => createIcons(option)));
+    updateIcons(
+      OptionsList.map((option) =>
+        searchIconsByName("", searchTheme.current.value, option)
+      )
+    );
   }, []);
+
+  // useEffect(() => {
+  //   updateIcons(OptionsList.map((option) => createIcons(option)));
+  // }, []);
 
   const clearValue = useCallback(() => {
     inputField.current.value = "";
