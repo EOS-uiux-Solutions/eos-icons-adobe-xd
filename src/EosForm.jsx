@@ -40,6 +40,7 @@ const EosForm = ({
           onChange={handleOnChange}
         />
       </div>
+
       <div className="select-container">
         <label htmlFor="category">
           <div className="label">

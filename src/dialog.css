@@ -99,3 +99,33 @@
   margin-right: 10px;
   margin-left: -23px;
 }
+
+.eos-info-container .eos-info {
+  display: none;
+  cursor: default;
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  z-index: 1;
+  margin-top: 5px;
+  right: 10px;
+}
+
+.eos-info-container:hover .eos-info {
+  display: block;
+}
+
+.eos-info-container {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  margin: auto 5px;
+  cursor: pointer;
+}
+
+.eos-info {
+  font-size: 12px;
+}
