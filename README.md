@@ -60,3 +60,14 @@ Semantic Release helps in automating the whole package release workflow. semanti
 
 To commit a release follow the link:
 https://github.com/EOS-uiux-Solutions/wiki/blob/main/Semantic-Releases.md
+
+## Learn more about the EOS UX/UI Solutions
+
+- [EOS Icons](https://eos-icons.com)
+
+- [EOS User Story](https://userstory.site)
+
+- [Follow us on Twitter](https://twitter.com/eos_uxui)
+
+- [Join us on Slack](https://slack.userstory.site)
+
